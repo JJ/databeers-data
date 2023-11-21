@@ -34,3 +34,6 @@ sessions.per.ID <- tickets.df %>%
   group_by(ID) %>%
   summarise(n = n_distinct(session))
 
+beers <- fromJSON(file="data/beers.json")
+
+beers.df <- data.frame( ID=character(), session=numeric(), talk=numeric())
