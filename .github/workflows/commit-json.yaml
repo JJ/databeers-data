@@ -17,7 +17,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Set up node
         uses: actions/setup-node@v4
-      - name: Descarga JSON
+      - name: Descarga JSON y genera html
         run: make
       - name: Sube JSON actualizado
         run: |
