@@ -13,6 +13,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Set up node
+        uses: actions/setup-node@v4
       - name: Descarga JSON
         run: make
       - name: Sube JSON actualizado
@@ -25,3 +29,10 @@ jobs:
           else
               echo "🟏 No ha habido cambios"
           fi
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "."
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
