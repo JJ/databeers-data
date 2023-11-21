@@ -1,0 +1,27 @@
+name: "Descarga ficheros de datos"
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  genera-objetivos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout this
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Descarga JSON
+        run: make
+      - name: Sube JSON actualizado
+        run: |
+          if [ -n "$(git status -s)" ]; then
+              git config --global user.email "jjmerelo@gmail.com"
+              git config --global user.name "DataBeersBot"
+              git commit -am ":arrow_up: Actualiza datos"
+              git push
+          else
+              echo "🟏 No ha habido cambios"
+          fi
