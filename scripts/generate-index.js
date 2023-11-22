@@ -23,36 +23,33 @@ beers.forEach((beer) => {
 const uniqueBeerIdCount = uniqueBeerIds.size;
 
 // Create HTML page
-const html = `
-    <!DOCTYPE html>
-    <html>
-        <head>
-        <title>Databeers GRX 2023</title>
+const html = `<!DOCTYPE html>
+<html>
+    <head>
+    <title>Databeers GRX 2023</title>
+            <style>
+            @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+                body {
+                    font-family: 'Josefin Sans', cursive;
+                }
 
-                </head>
-                <style>
-                @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
-                    body {
-                        font-family: 'Fancy Typeface', cursive;
-                    }
+                h1 {
+                    font-size: 5vw;
+                }
 
-                    h1 {
-                        font-size: 48px;
-                    }
-
-                    p {
-                        font-size: 24px;
-                    }
-                </style>
-                <body>
-                <h1>DashBeer</h1>
-                <p>${ticketCount} 🎫</p>
-                <p>${uniqueTicketIdCount} 🎟️ 🧑</p>
-                <p>${beerCount} 🍺</p>
-                <p>${uniqueBeerIdCount} 🍻 🧑</p>
-                </body>
-            </html>
-            `;
+                p {
+                    font-size: 4vw;
+                }
+            </style>
+    </head>
+    <body>
+            <h1>DashBeer</h1>
+            <p>${ticketCount} 🎫</p>
+            <p>${uniqueTicketIdCount} 🎟️ 🧑</p>
+            <p>${beerCount} 🍺</p>
+            <p>${uniqueBeerIdCount} 🍻 🧑</p>
+   </body>
+</html>`;
 
 // Write HTML page to disk
 writeFileSync("index.html", html);
