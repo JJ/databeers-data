@@ -28,6 +28,11 @@ IDs.per.talk <- tickets.df %>%
   group_by(session,talk) %>%
   summarise(n = n_distinct(ID))
 
+IDs.per.talk$session.talk <- paste0(IDs.per.talk$session,"-",IDs.per.talk$talk)
+IDs.per.talk$session.talk <- as.factor(IDs.per.talk$session.talk)
+ggplot(IDs.per.talk, aes(x=reorder(session.talk,-n), y=n))+geom_bar(stat="identity")+ theme_tufte()+theme(axis.text = element_text(angle = 45))+theme(axis.text = element_text(size=30))
+
+
 talks.per.ID <- tickets.df %>%
   group_by(ID) %>%
   summarise(n = n_distinct(session,talk))
