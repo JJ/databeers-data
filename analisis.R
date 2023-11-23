@@ -2,6 +2,7 @@ library(rjson)
 library(stringr)
 library(dplyr)
 library(ggplot2)
+library(ggthemes)
 
 tickets <- fromJSON(file="data/tickets.json")
 
@@ -33,7 +34,11 @@ talks.per.ID <- tickets.df %>%
 
 talks.per.ID$idu <- as.numeric(row.names(talks.per.ID))
 
-ggplot(talks.per.ID,aes(x=reorder(idu,-n),y=n))+geom_bar(stat="identity")
+ggplot(talks.per.ID,aes(x=reorder(idu,-n),y=n))+geom_bar(stat="identity")+ theme_tufte()+theme(
+  axis.title.x = element_blank(),
+  axis.ticks.x = element_blank(),
+  axis.text.x = element_blank(),
+  axis.text.y = element_text(size=30))
 
 sessions.per.ID <- tickets.df %>%
   group_by(ID) %>%
